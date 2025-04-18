@@ -26,4 +26,19 @@ public class TreeService {
         }
     }
 
+    private TreeNode insertRecursive(TreeNode node, int value) {
+        if (node == null) {
+            return new TreeNode(String.valueOf(value));
+        }
+
+        int currentValue = Integer.parseInt(node.getValue());
+
+        if (value < currentValue) {
+            node.setLeft(insertRecursive(node.getLeft(), value));
+        } else {
+            node.setRight(insertRecursive(node.getRight(), value));
+        }
+         return node;
+    }
+
 }
