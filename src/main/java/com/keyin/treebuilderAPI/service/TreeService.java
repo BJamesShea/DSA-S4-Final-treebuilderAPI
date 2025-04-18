@@ -1,6 +1,9 @@
 package com.keyin.treebuilderAPI.service;
 
 import com.keyin.treebuilderAPI.model.TreeNode;
+import com.keyin.treebuilderAPI.model.TreeNodeEntity;
+import com.keyin.treebuilderAPI.repository.TreeNodeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
