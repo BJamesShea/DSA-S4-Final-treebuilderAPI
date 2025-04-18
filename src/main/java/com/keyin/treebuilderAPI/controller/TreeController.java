@@ -7,6 +7,8 @@ import com.keyin.treebuilderAPI.service.TreeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/tree")
@@ -40,5 +42,10 @@ public class TreeController {
         entity.setLeft(convertToEntity(node.getLeft()));
         entity.setRight(convertToEntity(node.getRight()));
         return entity;
+    }
+
+    @GetMapping("/all")
+    public List<TreeNodeEntity> getAllTrees() {
+        return treeService.getAllTrees();
     }
 }

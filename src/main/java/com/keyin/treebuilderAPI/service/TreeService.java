@@ -51,4 +51,9 @@ public class TreeService {
     public TreeNodeEntity saveTree(TreeNodeEntity rootEntity) {
         return treeNodeRepository.save(rootEntity);
     }
+
+    public List<TreeNodeEntity> getAllTrees() {
+        return treeNodeRepository.findAll();
+    }
+
 }
