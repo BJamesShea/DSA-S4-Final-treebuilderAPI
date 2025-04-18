@@ -5,13 +5,16 @@ import com.keyin.treebuilderAPI.model.TreeNodeEntity;
 import com.keyin.treebuilderAPI.repository.TreeNodeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.List;
 
+import java.util.List;
 
 @Service
 public class TreeService {
 
     private TreeNode root;
+
+    @Autowired
+    private TreeNodeRepository treeNodeRepository;
 
     public TreeNode getRoot() {
         return root;
@@ -24,7 +27,7 @@ public class TreeService {
     public void buildTreeFromList(List<Integer> values) {
         root = null; // resetting
 
-        for  (int value : values) {
+        for (int value : values) {
             root = insertRecursive(root, value);
         }
     }
@@ -41,7 +44,11 @@ public class TreeService {
         } else {
             node.setRight(insertRecursive(node.getRight(), value));
         }
-         return node;
+
+        return node;
     }
 
+    public TreeNodeEntity saveTree(TreeNodeEntity rootEntity) {
+        return treeNodeRepository.save(rootEntity);
+    }
 }
