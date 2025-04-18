@@ -1,5 +1,7 @@
 package com.keyin.treebuilderAPI.controller;
 
+
+import com.keyin.treebuilderAPI.model.TreeRequestDTO;
 import com.keyin.treebuilderAPI.model.TreeNode;
 import com.keyin.treebuilderAPI.service.TreeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +16,8 @@ public class TreeController {
     private TreeService treeService;
 
     @PostMapping
-    public String setTree(@RequestBody TreeNode root) {
-        treeService.setRoot(root);
+    public String setTree(@RequestBody TreeRequestDTO request) {
+        treeService.buildTreeFromList(request.getValues());
         return "Tree has been set.";
     }
 
